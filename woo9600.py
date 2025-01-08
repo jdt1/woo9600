@@ -8,10 +8,10 @@ from collections import defaultdict
 def print_retro_header():
     """Print a cool retro-style header."""
     header = """
-╔══════════════════════════════════════════════════════════════════════════════╗
+╔═════════════════════════════════════════════════════════════════════════════╗
 ║                    W O O C O M M E R C E   A N A L Y T I C S                ║
-║                        [ Sales Performance Monitor ]                         ║
-╚══════════════════════════════════════════════════════════════════════════════╝
+║                        [ Sales Performance Monitor ]                        ║
+╚═════════════════════════════════════════════════════════════════════════════╝
 """
     return header
 
@@ -117,7 +117,7 @@ class RetroASCIIGraph:
         output = []
 
         # Add legend
-        output.append('╔════ DATA SERIES ══════════════════════╗')
+        output.append('╔════ DATA SERIES ═════════════════════╗')
         for _, label, symbol in data_series:
             output.append(f'║ {symbol} : {label:<32} ║')
         output.append('╚══════════════════════════════════════╝')
@@ -159,7 +159,7 @@ class RetroASCIIGraph:
         self.max_y = 20
         self.min_y = 0
         self.left_margin = 6  # Space for y-axis labels
-        self.total_width = self.width + self.left_margin + 2  # +2 for borders
+        self.total_width = self.width + self.left_margin + 1
 
     def normalize_data(self, data: List[float]) -> List[float]:
         return [
@@ -189,7 +189,7 @@ class RetroASCIIGraph:
         output = []
 
         # Add legend
-        output.append('╔════ DATA SERIES ══════════════════════╗')
+        output.append('╔════ DATA SERIES ═════════════════════╗')
         for _, label, symbol in data_series:
             output.append(f'║ {symbol} : {label:<32} ║')
         output.append('╚══════════════════════════════════════╝')
@@ -225,8 +225,8 @@ class RetroASCIIGraph:
                     x_axis[start + j] = char
 
         # Add x-axis to output
-        output.append(f'║ {" " * self.left_margin}{"".join(x_axis)} ║')
-        output.append(f'║ {" " * self.left_margin}{"Days Ago":^{self.width}} ║')
+        output.append(f'║ {" " * self.left_margin}{"".join(x_axis)}║')
+        output.append(f'║ {" " * self.left_margin}{"Days Ago":^{self.width}}║')
 
         # Add bottom border
         output.append('╚' + '═' * self.total_width + '╝')
